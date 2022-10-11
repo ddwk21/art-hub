@@ -406,8 +406,9 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 
 img,
 video {
-  max-width: 100%;
+  max-width: 70%;
   height: auto;
+  align-content: center;
 }
 
 *, ::before, ::after {
@@ -835,4 +836,8 @@ video {
   }
 }
 
+
+body {
+  background-color: rgb(245, 235, 222);
+}
 
