@@ -9,10 +9,21 @@ h1 {
     color: white;
 }
 
-.art-image {
-    display: flex;
-    justify-content: center;
-    max-width: 70%;
-    max-height: 90%;
+.art-frame {
+    display: block;
+    padding: 2% 1% 2% 1%;
     margin: 5% 15% 5% 15%;
+    background-color: black;
+
   }
+
+.art-image {
+    display: block;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+  }
+
+  
