@@ -2,4 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-
+h1 {
+    display:flex;
+    justify-content: center;
+    color: white;
+}
