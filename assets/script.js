@@ -9,24 +9,22 @@ const harvardArt = "https://api.harvardartmuseums.org/object"
 const harvardPages = 2417;
 //there are this many pages at 100 size for harvard fetch
 
-function saveData(x){
-    harvardWorking = x;
+// function saveData(x){
+//     harvardWorking = x;
+// }
+
+function harvardFetch()
+{
+    let randomPage = Math.floor(Math.random()*harvardPages)
+    fetch('https://api.harvardartmuseums.org/object?&size=100&apikey='+harvardKey+'&page='+randomPage+'')
+        .then((response) => response.json())
+        .then((data) => harvardWorking = data.records.filter(function(record){return !!record.primaryimageurl}))
+        .then(() => renderHarvard())
 }
 
-function masterFetch()
-    {
-    function harvardFetch()
-    {
-        let randomPage = Math.floor(Math.random()*harvardPages)
-        return fetch('https://api.harvardartmuseums.org/object?&size=100&apikey='+harvardKey+'&page='+randomPage+'').then((response) => response.json())
-    }
 
-    harvardWorking = harvardFetch();
-    console.log(harvardWorking)
 
-}
 
-masterFetch();
 //random number between 0 and 400k
 function metFetch()
 {
@@ -46,16 +44,19 @@ function metFetch()
 harvardFetch()
 
 // const otherImage = imageEl.appendChild('img')
+function renderHarvard()
+{
+    let art = harvardWorking[Math.floor(Math.random()*harvardWorking.length)]
 
-let art = workingObjects[Math.floor(Math.random()*100)]
+    console.log(art)
 
-let randomindex = Math.floor(Math.random()*100);
-console.log(randomindex)
+    console.log(harvardWorking)
+    
+    imageEl.src = harvardWorking.records[art].primaryimageurl;
 
-if (art.primaryimageurl.length >1) otherImage.src = workingObjects[Math.floor(Math.random()*100)].primaryimageurl
-
-console.log(imageEl)
-console.log(art)
+    console.log(imageEl)
+    console.log(art)
+}
 // function fetchMaster()
 // {
 //     let toggle = Math.floor(Math.random())
