@@ -5,7 +5,7 @@ let workingObjects = [];
 let harvardWorking;
 let imageEl = document.getElementById("image");
 const harvardKey = "41920f1f-a0a4-40cf-b3fb-3ce184ea6dc1";
-const harvardArt = "https://api.harvardartmuseums.org/object"
+const harvardArt = "https://api.harvardartmuseums.org/object";
 
 const harvardPages = 2417;
 //there are this many pages at 100 size for harvard fetch
@@ -54,16 +54,23 @@ harvardFetch()
 // const otherImage = imageEl.appendChild('img')
 function renderHarvard()
 {
+    if(harvardWorking.length < 1){
+        harvardFetch();
+        return;
+    }
     //randomly select an item from harvardworking array
-    let art = harvardWorking[Math.floor(Math.random()*harvardWorking.length)]
+    else  
+    {
+        let art = harvardWorking[Math.floor(Math.random()*harvardWorking.length)]
 
 
-    console.log(art)
+        console.log(art)
 
-    console.log(harvardWorking)
-    
-    //trying to set the image from index html to the image of the record from the array
-    imageEl.src = harvardWorking.records[art].primaryimageurl;
+        console.log(harvardWorking)
+        
+        //trying to set the image from index html to the image of the record from the array
+        imageEl.src = art.primaryimageurl;
+    }
 }
 // function fetchMaster()
 // {
