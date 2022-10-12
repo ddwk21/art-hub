@@ -1,7 +1,7 @@
 // fetch('https://collectionapi.metmuseum.org/public/collection/v1/objects')
 //     .then((response) => response.json())
 //     .then((data) => console.log(data)) 
-let workingObjects = [];
+let metWorking = [];
 let harvardWorking;
 let imageEl = document.getElementById("image");
 const harvardKey = "41920f1f-a0a4-40cf-b3fb-3ce184ea6dc1";
@@ -39,17 +39,23 @@ function metFetch()
     // let dataPoolStart = Math.floor(Math.random()*400001)
     // let dataPoolEnd = dataPoolStart + 50;
 
-    for(let i = 0; i<=100; i++)
-    {    
-        let dataPoolStart = Math.floor(Math.random()*400001)
-        fetch('https://collectionapi.metmuseum.org/public/collection/v1/objects/'+dataPoolStart)
-            .then((response) => response.json())
-            .then((data) => workingObjects.push(data)) 
-    }
-    console.log(workingObjects)
+    // for(let i = 0; i<1; i++)
+    // {    
+    //     let dataPoolStart = Math.floor(Math.random()*400001)
+    //     fetch('https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true' )
+    //         .then((response) => response.json())
+    //         .then((data) => metWorking.push(data)) 
+    //         .then(() => console.log(metWorking))
+    // }
+    console.log('placeholder');
+    
 }
+//Will ask josh how to get around CORS issue.
+//Want to return object with image IDs, then store in local storage
+//Want to randomly select an object id from stored IDs and then fetch it and display image.
 
 harvardFetch()
+metFetch()
 
 // const otherImage = imageEl.appendChild('img')
 function renderHarvard()
@@ -82,4 +88,5 @@ function renderHarvard()
 
 // }
 
+//arraychooser
 
