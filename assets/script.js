@@ -1,13 +1,25 @@
 // fetch('https://collectionapi.metmuseum.org/public/collection/v1/objects')
 //     .then((response) => response.json())
 //     .then((data) => console.log(data)) 
-let metWorking = [];
+let metWorking;
 let harvardWorking;
 let imageEl = document.getElementById("image");
 const harvardKey = "41920f1f-a0a4-40cf-b3fb-3ce184ea6dc1";
 const harvardArt = "https://api.harvardartmuseums.org/object";
+let metIds;
 
 const harvardPages = 2417;
+
+function setMetIds()
+{
+    fetch('https://collectionapi.metmuseum.org/public/collection/v1/objects')
+            .then((response) => response.json())
+            .then((data) => metIds = data)
+            .then(() => metFetch()) 
+        
+}
+
+setMetIds();
 //there are this many pages at 100 size for harvard fetch
 
 // function saveData(x){
@@ -36,26 +48,44 @@ function harvardFetch()
 //random number between 0 and 400k
 function metFetch()
 {
-    // let dataPoolStart = Math.floor(Math.random()*400001)
-    // let dataPoolEnd = dataPoolStart + 50;
+    console.log(metIds)
+    // let randomParentIndex = Math.floor(Math.random()*metIds.objectIDs.length)
+    // let randomChildIndex = Math.floor(Math.random()*metIds.objectIDs[randomParentIndex].length)
+    let randomId = Math.floor(Math.random()*metIds.total)
+    console.log(randomId)
 
-    // for(let i = 0; i<1; i++)
-    // {    
-    //     let dataPoolStart = Math.floor(Math.random()*400001)
-    //     fetch('https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true' )
-    //         .then((response) => response.json())
-    //         .then((data) => metWorking.push(data)) 
-    //         .then(() => console.log(metWorking))
-    // }
+    fetch('https://collectionapi.metmuseum.org/public/collection/v1/objects/'+randomId )
+        .then((response) => response.json())
+        .then((data) => metWorking = data) 
+        .then(() => renderMet())
+
+
+    
+
     console.log('placeholder');
     
+}
+
+function renderMet()
+{
+    console.log(metWorking)
+    if(!metWorking.primaryImage)
+    {
+        metFetch()
+        return
+    }
+
+    else
+    {
+        console.log('Image found')
+    }
 }
 //Will ask josh how to get around CORS issue.
 //Want to return object with image IDs, then store in local storage
 //Want to randomly select an object id from stored IDs and then fetch it and display image.
 
 harvardFetch()
-metFetch()
+// metFetch()
 
 // const otherImage = imageEl.appendChild('img')
 function renderHarvard()
