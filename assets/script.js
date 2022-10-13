@@ -88,9 +88,23 @@ function renderHarvard()
 
     }   
 
+    if(art.images.length > 1){
+        //logic here
+        for(let i = 0; i < images.length; i++){
+            //for each image
+            //append image element child to container/frame div
+            //set image.src to images[i].baseurl
+        }
+    }
+
     console.log(harvardWorking)
     
     //trying to set the image from index html to the image of the record from the array
+   
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+   // PUT THIS IN AN ELSE FUNCTION, SO IF THERE ARE NO ADDITIONAL IMAGES JUST USE PRIMARY
+   //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+   
     imageEl.src = art.primaryimageurl;
 }
 // function fetchMaster()
