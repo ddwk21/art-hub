@@ -21,7 +21,7 @@ function harvardFetch()
     let randomPage = Math.floor(Math.random()*harvardPages)
 
     //fetch using API key and the previously generated random page
-    fetch('https://api.harvardartmuseums.org/object?&size=100&apikey='+harvardKey+'&page='+randomPage+'')
+    fetch('https://api.harvardartmuseums.org/object?&size=100&apikey='+harvardKey+'&displayOrder=2&page='+randomPage+'')
         .then((response) => response.json())
         .then((data) => harvardWorking = data.records.filter(function(record){return !!record.primaryimageurl}))
         //Filter function only allows in records that have an image included with their data, then adds them to the array harvardworking
