@@ -73,19 +73,19 @@ function renderHarvard()
 {
     //randomly select an item from harvardworking array
     let art = harvardWorking[Math.floor(Math.random()*harvardWorking.length)]
-
-$("#info").append(`<p>Name: ${art.people[0].name}</p>`)
-$("#info").append(`<p>Role: ${art.people[0].role}</p>`)
-$("#info").append(`<p>Dated: ${art.dated}</p>`)
-$("#info").append(`<p>Culture: ${art.culture}</p>`)
-$("#info").append(`<p>Medium: ${art.medium}</p>`)
+    $("#info").append(`<p>Title: ${art.title}</p>`)
+    $("#info").append(`<p>Name: ${art.people[0].name}</p>`)
+    $("#info").append(`<p>Role: ${art.people[0].role}</p>`)
+    $("#info").append(`<p>Dated: ${art.dated}</p>`)
+    $("#info").append(`<p>Culture: ${art.culture}</p>`)
+    $("#info").append(`<p>Medium: ${art.medium}</p>`)
 // using the console.log to filter through images that fit the criteria.
-if (!! art.people[0].name){
+    if (!! art.people[0].name){
     console.log(art.people[0].name, art.people[0].role, art.dated, art.culture, art.medium)
     console.log(art)
-} else {
+    } else {
 
-}
+    }   
 
     console.log(harvardWorking)
     
