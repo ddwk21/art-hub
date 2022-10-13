@@ -82,6 +82,7 @@ function renderHarvard()
 // using the console.log to filter through images that fit the criteria.
     if (!! art.people[0].name){
     console.log(art.people[0].name, art.people[0].role, art.dated, art.culture, art.medium)
+    console.log(art.images)// Display amount of images attached to file. 
     console.log(art)
     } else {
 
