@@ -39,12 +39,38 @@ function metFetch()
     // let dataPoolStart = Math.floor(Math.random()*400001)
     // let dataPoolEnd = dataPoolStart + 50;
 
+<<<<<<< HEAD
+    fetch('https://collectionapi.metmuseum.org/public/collection/v1/objects/'+randomId )
+        .then((response) => response.json())
+        .then((data) => metWorking = data) 
+        .then(() => renderMet())
+
+
+    
+    console.log('placeholder');
+    
+}
+
+function renderMet()
+{
+    console.log(metWorking)
+    if(!metWorking.primaryImage)
+    {
+        metFetch()
+        return
+    }
+
+    else
+    {
+        console.log('Image found')
+=======
     for(let i = 0; i<=100; i++)
     {    
         let dataPoolStart = Math.floor(Math.random()*400001)
         fetch('https://collectionapi.metmuseum.org/public/collection/v1/objects/'+dataPoolStart)
             .then((response) => response.json())
             .then((data) => workingObjects.push(data)) 
+>>>>>>> 26efef5dddd3801267252df590a6aba72ac520bb
     }
     console.log(workingObjects)
 }
