@@ -39,14 +39,14 @@ function metFetch()
     // let dataPoolStart = Math.floor(Math.random()*400001)
     // let dataPoolEnd = dataPoolStart + 50;
 
-    // for(let i = 0; i<1; i++)
-    // {    
-    //     let dataPoolStart = Math.floor(Math.random()*400001)
-    //     fetch('https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true' )
-    //         .then((response) => response.json())
-    //         .then((data) => metWorking.push(data)) 
-    //         .then(() => console.log(metWorking))
-    // }
+    for(let i = 0; i<1; i++)
+    {    
+        let dataPoolStart = Math.floor(Math.random()*400001)
+        fetch('https://collectionapi.metmuseum.org/public/collection/v1/search?q=art&hasImages=true' )
+            .then((response) => response.json())
+            .then((data) => metWorking.push(data)) 
+            .then(() => console.log(metWorking))
+    }
     console.log('placeholder');
     
 }
