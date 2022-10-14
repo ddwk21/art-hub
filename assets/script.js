@@ -88,7 +88,7 @@ function renderHarvard()
 
     }   
 
-    if(art.images.length > 1){
+    if(!!art.images){
         //logic here
         for(let i = 0; i < images.length; i++){
             //for each image
@@ -104,7 +104,7 @@ function renderHarvard()
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
    // PUT THIS IN AN ELSE FUNCTION, SO IF THERE ARE NO ADDITIONAL IMAGES JUST USE PRIMARY
    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-   
+
     imageEl.src = art.primaryimageurl;
 }
 // function fetchMaster()
