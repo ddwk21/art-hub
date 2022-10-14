@@ -71,20 +71,34 @@ harvardFetch()
 // const otherImage = imageEl.appendChild('img')
 function renderHarvard()
 {
-    //randomly select an item from harvardworking array
-    let art = harvardWorking[Math.floor(Math.random()*harvardWorking.length)]
-    $("#info").append(`<p>Title: ${art.title}</p>`)
-    $("#info").append(`<p>Name: ${art.people[0].name}</p>`)
-    $("#info").append(`<p>Role: ${art.people[0].role}</p>`)
-    $("#info").append(`<p>Dated: ${art.dated}</p>`)
-    $("#info").append(`<p>Culture: ${art.culture}</p>`)
-    $("#info").append(`<p>Medium: ${art.medium}</p>`)
-// using the console.log to filter through images that fit the criteria.
-    // if (!! art.people[0].name){
-    console.log(art.people[0].name, art.people[0].role, art.dated, art.culture, art.medium)
-    console.log(art.images)// Display amount of images attached to file. 
-    console.log(art)
-    // } else {
+    if(harvardWorking.length <=1){
+        harvardFetch();
+        return;
+    }
+
+    
+    else
+    {
+        //randomly select an item from harvardworking array
+        let art = harvardWorking[Math.floor(Math.random()*harvardWorking.length)]
+        //CHECK CLASSIFICATION HERE. IF PHOTO, CALL HARVARD FETCH AGAIN, RETURN FUNCTION
+        
+
+
+        $("#info").append(`<p>Title: ${art.title}</p>`)
+        $("#info").append(`<p>Name: ${art.people[0].name}</p>`)
+        $("#info").append(`<p>Role: ${art.people[0].role}</p>`)
+        $("#info").append(`<p>Dated: ${art.dated}</p>`)
+        $("#info").append(`<p>Culture: ${art.culture}</p>`)
+        $("#info").append(`<p>Medium: ${art.medium}</p>`)
+    // using the console.log to filter through images that fit the criteria.
+        // if (!! art.people[0].name){
+        console.log(art.people[0].name, art.people[0].role, art.dated, art.culture, art.medium)
+        console.log(art.images)// Display amount of images attached to file. 
+        console.log(art)
+
+    }
+        // } else {
 
     // }   
 
