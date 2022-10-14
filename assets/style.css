@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 
+#navbar {
+    overflow: hidden;
+}
+
 h1 {
     display:flex;
     justify-content: center;
@@ -14,7 +18,11 @@ h1 {
     top: 0;
 }
 
-
+.art-container {
+    position: relative;
+    background-size: auto;
+    
+}
 
 .art-image {
     display: block;
@@ -26,9 +34,23 @@ h1 {
     box-shadow: 0px 0px 200px rgb(252 251 248);
   }
   
-#info
-  {
+.art-info {
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
     text-align: center;
-color: white;
-font-size: 20px;
+    opacity: 0;
+    transition: .5s ease;
+    text-shadow: 5 5 black;
+  }
+
+ 
+
+  .art-container:hover .art-info {
+    opacity: 1;
   }
