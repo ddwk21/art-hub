@@ -80,24 +80,26 @@ function renderHarvard()
     $("#info").append(`<p>Culture: ${art.culture}</p>`)
     $("#info").append(`<p>Medium: ${art.medium}</p>`)
 // using the console.log to filter through images that fit the criteria.
-    if (!! art.people[0].name){
+    // if (!! art.people[0].name){
     console.log(art.people[0].name, art.people[0].role, art.dated, art.culture, art.medium)
     console.log(art.images)// Display amount of images attached to file. 
     console.log(art)
-    } else {
+    // } else {
 
-    }   
+    // }   
 
-    // if(!!art.images){
-    //     //logic here
-    //     for(let i = 0; i < images.length; i++){
+    if(!!art.images){
+        //logic here
+        for(let i = 0; i < art.images.length; i++){
 
             //'<img src ='+art.images[i].whateverurlvariablename+'/>'
+            $(".art-image").append("img").attr("src", art.images[i].baseimageurl);
             //for each image
             //append image element child to container/frame div
             //set image.src to images[i].baseurl
-    //     }
-    // }
+        }
+    }
+    // exclude classification:17
 
     console.log(harvardWorking)
     
