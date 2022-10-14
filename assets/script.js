@@ -91,6 +91,8 @@ function renderHarvard()
     if(!!art.images){
         //logic here
         for(let i = 0; i < images.length; i++){
+
+            //'<img src ='+art.images[i].whateverurlvariablename+'/>'
             //for each image
             //append image element child to container/frame div
             //set image.src to images[i].baseurl
@@ -116,5 +118,17 @@ function renderHarvard()
 //     else harvardFetch();
 
 // }
+
+
+
+
+
+
+
+
+
+
+
+//Write scrolling
 
 
