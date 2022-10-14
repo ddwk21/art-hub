@@ -88,16 +88,16 @@ function renderHarvard()
 
     }   
 
-    if(!!art.images){
-        //logic here
-        for(let i = 0; i < images.length; i++){
+    // if(!!art.images){
+    //     //logic here
+    //     for(let i = 0; i < images.length; i++){
 
             //'<img src ='+art.images[i].whateverurlvariablename+'/>'
             //for each image
             //append image element child to container/frame div
             //set image.src to images[i].baseurl
-        }
-    }
+    //     }
+    // }
 
     console.log(harvardWorking)
     
@@ -125,10 +125,28 @@ function renderHarvard()
 
 
 
+function handleScroll(){
+
+    let pageEnd = document.body.offsetHeight;
+    let breakpoint = window.innerHeight + window.pageYOffset;
+    console.log(breakpoint)
+
+    if( breakpoint >= pageEnd)
+    {
+        console.log('loadnew')
+        //rendering logic here
+    }
+
+}
 
 
+window.addEventListener("scroll", handleScroll);
+//Write scrolling event listener
 
+//on scroll check page position in relation to last child of body
 
-//Write scrolling
+//if close enough to last child of body, run some rendering logic
+
+//use placeholder div generation to make sure it works
 
 
