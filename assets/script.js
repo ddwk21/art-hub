@@ -7,7 +7,7 @@ let imageEl = document.getElementById("image");
 const harvardKey = "41920f1f-a0a4-40cf-b3fb-3ce184ea6dc1";
 const harvardArt = "https://api.harvardartmuseums.org/object";
 
-const harvardPages = 2417;
+const harvardPages = 24170;
 //there are this many pages at 100 size for harvard fetch
 
 // function saveData(x){
@@ -20,7 +20,7 @@ function harvardFetch() {
 
   //fetch using API key and the previously generated random page
   fetch(
-    "https://api.harvardartmuseums.org/object?&size=100&&apikey=" +
+    "https://api.harvardartmuseums.org/object?&size=10&&apikey=" +
       harvardKey +
       "&page=" +
       randomPage +
