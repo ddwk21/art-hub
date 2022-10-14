@@ -40,7 +40,7 @@ function harvardFetch() {
 }
 
 //random number between 0 and 400k
-function metFetch() {
+function metFetch(e) {
   // let dataPoolStart = Math.floor(Math.random()*400001)
   // let dataPoolEnd = dataPoolStart + 50;
 
@@ -121,6 +121,8 @@ function renderHarvard() {
   // exclude classification:17
 
   console.log(harvardWorking);
+
+
   
   //trying to set the image from index html to the image of the record from the array
   
@@ -130,15 +132,27 @@ function renderHarvard() {
   
   
 }
-// function fetchMaster()
-// {
-//     let toggle = Math.floor(Math.random())
 
-//     if(toggle) metFetch();
+let elementCount=0;
 
-//     else harvardFetch();
+function addContent()
+{
+    elementCount++
+    $('#body').append('<div></div>')
 
-// }
+    //generate new frame div
+    //generate new img element
+    //assign element to variable, pass element to rendering/fetching functions
+}
+function fetchMaster()
+{
+    let toggle = Math.floor(Math.random())
+
+    if(toggle) metFetch();
+
+    else harvardFetch();
+
+}
 
 function handleScroll() {
   let pageEnd = document.body.offsetHeight;
