@@ -138,7 +138,7 @@ let elementCount=0;
 function addContent()
 {
     elementCount++
-    $('#body').append('<div></div>')
+    $('#body').append('<div ></div>')
 
     //generate new frame div
     //generate new img element
