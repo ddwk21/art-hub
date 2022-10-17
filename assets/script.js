@@ -77,7 +77,7 @@ function renderHarvard() {
     //randomly select an item from harvardworking array
     let art = harvardWorking[Math.floor(Math.random() * harvardWorking.length)];
     console.log("art", art)
-    if (art.classificationid === 17 || !art.title || !art.people  || !art.dated || !art.culture || !art.medium) {
+    if (art.classificationid === 17 || !art.title || !art.people || !art.dated || !art.culture) {
         console.log("start over")
         console.log(art.people)
         harvardFetch();
@@ -100,12 +100,12 @@ function renderHarvard() {
     }
     //CHECK CLASSIFICATION HERE. IF PHOTO, CALL HARVARD FETCH AGAIN, RETURN FUNCTION
 
-    $("#info").append(`<p>Title: ${art.title}</p>`);
-    $("#info").append(`<p>Name: ${art.people[0].name}</p>`);
-    $("#info").append(`<p>Role: ${art.people[0].role}</p>`);
-    $("#info").append(`<p>Dated: ${art.dated}</p>`);
-    $("#info").append(`<p>Culture: ${art.culture}</p>`);
-    $("#info").append(`<p>Medium: ${art.medium}</p>`);
+    if (!!art.title)$("#info").append(`<p>Title: ${art.title}</p>`);
+    if (!!art.people.name)$("#info").append(`<p>Name: ${art.people[0].name}</p>`);
+    if (!!art.people.role)$("#info").append(`<p>Role: ${art.people[0].role}</p>`);
+    if (!!art.dated)$("#info").append(`<p>Dated: ${art.dated}</p>`);
+    if (!!art.culture)$("#info").append(`<p>Culture: ${art.culture}</p>`);
+    // $("#info").append(`<p>Medium: ${art.medium}</p>`);
     // using the console.log to filter through images that fit the criteria.
     // if (!! art.people[0].name){
         console.log(
