@@ -172,4 +172,17 @@ window.addEventListener("scroll", handleScroll);
 
 //if close enough to last child of body, run some rendering logic
 
-//use placeholder div generation to make sure it works
+
+window.onscroll = function() {stickNav()};
+
+var navbar = document.getElementById("navbar");
+var sticky = navbar.offsetTop;
+
+function stickNav() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+  } else {
+    navbar.classList.remove("sticky");
+  }
+}
+

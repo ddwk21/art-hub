@@ -13,11 +13,6 @@ h1 {
     color: white;
 }
 
-.sticky {
-    position: fixed;
-    top: 0;
-}
-
 .art-container {
     position: relative;
     background-size: auto;
@@ -32,9 +27,30 @@ h1 {
     margin-top: 10%;
     margin-bottom: 10%;
     box-shadow: 0px 0px 200px rgb(252 251 248);
+}
+
+.overlay {
+    position: absolute;
+    top: 15%;
+    bottom: 15%;
+    left: 25%;
+    right: 0;
+    height: 70%;
+    width: 50%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: rgba(80, 78, 78, 0.75)
+}
+  
+  .art-container:hover .overlay {
+    opacity: 1;
+  }
+
+  .art-container:hover .art-info {
+    opacity: 1;
   }
   
-.art-info {
+  .art-info {
     color: white;
     font-size: 20px;
     position: absolute;
@@ -44,13 +60,11 @@ h1 {
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     text-align: center;
-    opacity: 0;
-    transition: .5s ease;
-    text-shadow: 5 5 black;
   }
 
- 
-
-  .art-container:hover .art-info {
-    opacity: 1;
-  }
+  
+  .sticky {
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
