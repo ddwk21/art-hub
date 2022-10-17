@@ -76,11 +76,15 @@ function renderHarvard() {
 } else {
     //randomly select an item from harvardworking array
     let art = harvardWorking[Math.floor(Math.random() * harvardWorking.length)];
-    if (art.classificationid === 17) {
-        console.log("photo")
+    console.log("art", art)
+    if (art.classificationid === 17 || !art.title || !art.people  || !art.dated || !art.culture || !art.medium) {
+        console.log("start over")
+        console.log(art.people)
         harvardFetch();
       return;
-    }
+    // } else if (!art.people) {
+
+   }
     imageEl.src = art.primaryimageurl;
     if (!! art.images) {
       //logic here
