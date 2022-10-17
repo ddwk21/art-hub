@@ -138,10 +138,13 @@ let elementCount=0;
 function addContent()
 {
     elementCount++
-    $('#body').append('<div ></div>')
-
     //generate new frame div
+    $('#body').append('<div class="art-container" id = "art-container'+elementCount+'"></div>')
+
     //generate new img element
+    $('#art-container'+elementCount).append('<img class="mx-auto art-image blur hover:blur-lg" id = "image'+elementCount+'" alt="Art Image"/>')
+    
+
     //assign element to variable, pass element to rendering/fetching functions
 }
 function fetchMaster()
@@ -161,6 +164,7 @@ function handleScroll() {
 
   if (breakpoint >= pageEnd) {
     console.log("loadnew");
+    addContent();
     //rendering logic here
   }
 }
