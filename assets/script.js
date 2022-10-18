@@ -153,7 +153,7 @@ function addContent()
     $('#body').append('<div class="art-container" id = "art-container'+elementCount+'"></div>')
 
     //generate new img element
-    $('#art-container'+elementCount).append('<img class="mx-auto art-image blur hover:blur-lg" id = "image'+elementCount+'" alt="Art Image"/>')
+    $('#art-container'+elementCount).append('<img class="mx-auto art-image my-11" id = "image'+elementCount+'" alt="Art Image"/>')
 
     harvardFetch()
     
