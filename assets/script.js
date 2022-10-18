@@ -111,12 +111,15 @@ function renderHarvard() {
     //   }
     // }
     //CHECK CLASSIFICATION HERE. IF PHOTO, CALL HARVARD FETCH AGAIN, RETURN FUNCTION
+    if (!!art.title)$("#art-info"+elementCount).append(`<p>Title: ${art.title}</p>`);
 
-    if (!!art.title)$("#info").append(`<p>Title: ${art.title}</p>`);
-    if (!!art.people.name)$("#info").append(`<p>Name: ${art.people[0].name}</p>`);
-    if (!!art.people.role)$("#info").append(`<p>Role: ${art.people[0].role}</p>`);
-    if (!!art.dated)$("#info").append(`<p>Dated: ${art.dated}</p>`);
-    if (!!art.culture)$("#info").append(`<p>Culture: ${art.culture}</p>`);
+    if (!!art.people.name)$("#art-info"+elementCount).append(`<p>Name: ${art.people[0].name}</p>`);
+
+    if (!!art.people.role)$("#art-info"+elementCount).append(`<p>Role: ${art.people[0].role}</p>`);
+
+    if (!!art.dated)$("#art-info"+elementCount).append(`<p>Dated: ${art.dated}</p>`);
+
+    if (!!art.dated)$("#art-info"+elementCount).append(`<p>Culture: ${art.culture}</p>`)
     // $("#info").append(`<p>Medium: ${art.medium}</p>`);
     // using the console.log to filter through images that fit the criteria.
     // if (!! art.people[0].name){
@@ -159,6 +162,10 @@ function addContent()
 
     //generate new img element
     $('#art-container'+elementCount).append('<img class="mx-auto art-image my-11" id = "image'+elementCount+'" alt="Art Image"/>')
+
+    $('#'+elementCount).append('<div class="overlay"><div class="art-info max-w-1/2" id="info"></div></div>')
+
+
 
     //append new art-info element to same element as above, give art info a unique ID using the same method as above "art-info"+element count
     //make sure where you are adding info to the element, you also use this unique id. Same methodology
