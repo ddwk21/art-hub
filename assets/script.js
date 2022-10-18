@@ -159,7 +159,8 @@ function addContent()
     //generate new img element
     $('#art-container'+elementCount).append('<img class="mx-auto art-image blur hover:blur-lg" id = "image'+elementCount+'" alt="Art Image"/>')
 
-
+    //append new art-info element to same element as above, give art info a unique ID using the same method as above "art-info"+element count
+    //make sure where you are adding info to the element, you also use this unique id. Same methodology
     
 
     //assign element to variable, pass element to rendering/fetching functions
