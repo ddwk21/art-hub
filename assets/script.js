@@ -45,8 +45,11 @@ function harvardFetch() {
 
 //random number between 0 and 400k
 function metFetch(e) {
+  scrollLoaded = false;
   // let dataPoolStart = Math.floor(Math.random()*400001)
   // let dataPoolEnd = dataPoolStart + 50;
+
+  let randomId = Math.floor(Math.random()*400000)
 
   fetch(
     "https://collectionapi.metmuseum.org/public/collection/v1/objects/" +
@@ -54,7 +57,8 @@ function metFetch(e) {
   )
     .then((response) => response.json())
     .then((data) => (metWorking = data))
-    .then(() => renderMet());
+    .then(() => renderMet())
+    .finally(() => scrollLoaded = true);
 
   console.log("placeholder");
 }
@@ -65,24 +69,32 @@ function renderMet() {
     metFetch();
     return;
   } else {
+    addContent();
     console.log("Image found");
+    let metArt = metWorking;
+    if (elementCount >= 1){
+      imageEl = document.getElementById("image"+elementCount)
+    }
+    imageEl.src = metArt.primaryImage;
+
   }
   console.log(workingObjects);
 }
-
+metFetch();
+harvardFetch();
 harvardFetch();
 // add counter
 // const otherImage = imageEl.appendChild('img')
 function renderHarvard() {
+  let art = harvardWorking[Math.floor(Math.random() * harvardWorking.length)];
 
-
-  if (harvardWorking.length <= 1) {
+  if (harvardWorking.length <= 1||art.classificationid == 17) {
     harvardFetch();
     return;
 } else {
     addContent();
     //randomly select an item from harvardworking array
-    let art = harvardWorking[Math.floor(Math.random() * harvardWorking.length)];
+
     console.log("art", art)
     // if (art.classificationid === 17 || !art.title || !art.people || !art.dated || !art.culture) {
     //     console.log("start over")
@@ -150,7 +162,7 @@ function renderHarvard() {
 
 
 
-function addContent()
+function addContent(api)
 {
     elementCount++
     //generate new frame div
@@ -158,6 +170,10 @@ function addContent()
 
     //generate new img element
     $('#art-container'+elementCount).append('<img class="mx-auto art-image blur hover:blur-lg" id = "image'+elementCount+'" alt="Art Image"/>')
+
+    //if api = harvard logicblah
+
+    // 
 
     //append new art-info element to same element as above, give art info a unique ID using the same method as above "art-info"+element count
     //make sure where you are adding info to the element, you also use this unique id. Same methodology
@@ -167,9 +183,9 @@ function addContent()
 }
 function fetchMaster()
 {
-    let toggle = Math.floor(Math.random())
+    let toggle = Math.random()
 
-    if(toggle) metFetch();
+    if(toggle<0.5) metFetch();
 
     else harvardFetch();
 
@@ -182,7 +198,7 @@ function handleScroll() {
 
   if (breakpoint >= pageEnd && scrollLoaded == true) {
     console.log("loadnew");
-    harvardFetch();
+    fetchMaster();
     //rendering logic here
   }
 }
