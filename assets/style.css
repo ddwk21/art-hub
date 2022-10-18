@@ -27,9 +27,9 @@ h1 {
     display: block;
     max-height: 80%;
     max-width: 80%;
+    margin-top: 20%;
+    margin-bottom: 20%;
     justify-content: center;
-    margin-top: 10%;
-    margin-bottom: 10%;
     box-shadow: 0px 0px 200px rgb(252 251 248);
 }
 
@@ -49,10 +49,6 @@ h1 {
   .art-container:hover .overlay {
     opacity: 1;
   }
-
-  .art-container:hover .art-info {
-    opacity: 1;
-  }
   
   .art-info {
     color: white;
@@ -64,6 +60,7 @@ h1 {
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     text-align: center;
+
   }
 
   
