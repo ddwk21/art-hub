@@ -8,11 +8,17 @@ As a user that loves art, I want to be able to scroll through an endless feed of
 
 ## Acceptance Criteria
 GIVEN an application that displays art
+<br>
 WHEN I scroll down the page
+<br>
 THEN I am presented with a randomly generated piece of art
+<br>
 WHEN I hover over an image
+<br>
 THEN I am presented with information about the artist, culture, era, medium
+<br>
 WHEN I click the like button on an image
+<br>
 THEN the image is saved to localStorage to be viewed later 
 
 
