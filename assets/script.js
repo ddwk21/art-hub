@@ -1,7 +1,7 @@
 // fetch('https://collectionapi.metmuseum.org/public/collection/v1/objects')
 //     .then((response) => response.json())
 //     .then((data) => console.log(data))
-let workingObjects = [];
+let metWorking;
 let harvardWorking;
 let imageEl;
 const harvardKey = "41920f1f-a0a4-40cf-b3fb-3ce184ea6dc1";
@@ -69,6 +69,7 @@ function renderMet() {
   }
   console.log(workingObjects);
 }
+// metFetch();
 
 harvardFetch();
 // add counter
