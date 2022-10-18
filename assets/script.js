@@ -3,7 +3,7 @@
 //     .then((data) => console.log(data))
 let workingObjects = [];
 let harvardWorking;
-let imageEl = document.getElementById("image");
+let imageEl;
 const harvardKey = "41920f1f-a0a4-40cf-b3fb-3ce184ea6dc1";
 const harvardArt = "https://api.harvardartmuseums.org/object";
 let elementCount=0;
@@ -38,6 +38,7 @@ function harvardFetch() {
     //Filter function only allows in records that have an image included with their data, then adds them to the array harvardworking
 
     //call renderHarvard function
+  
     .then(() => renderHarvard())
     .finally(() => scrollLoaded = true)
 }
@@ -73,19 +74,22 @@ harvardFetch();
 // add counter
 // const otherImage = imageEl.appendChild('img')
 function renderHarvard() {
+
+
   if (harvardWorking.length <= 1) {
     harvardFetch();
     return;
 } else {
+    addContent();
     //randomly select an item from harvardworking array
     let art = harvardWorking[Math.floor(Math.random() * harvardWorking.length)];
     console.log("art", art)
-    if (art.classificationid === 17 || !art.title || !art.people || !art.dated || !art.culture) {
-        console.log("start over")
-        console.log(art.people)
-        harvardFetch();
-      return;
-    }
+    // if (art.classificationid === 17 || !art.title || !art.people || !art.dated || !art.culture) {
+    //     console.log("start over")
+    //     console.log(art.people)
+    //     harvardFetch();
+    //   return;
+    // }
 
     if (elementCount >= 1){
       imageEl = document.getElementById("image"+elementCount)
@@ -93,18 +97,18 @@ function renderHarvard() {
 
     imageEl.src = art.primaryimageurl;
     
-    if (!! art.images) {
-      //logic here
-      for (let i = art.images.length - 1; i > 0; i--) {
-        //'<img src ='+art.images[i].whateverurlvariablename+'/>'
-        console.log(art.images[i].baseimageurl);
-        $(".art-image").append("img").attr("src", art.images[i].baseimageurl);
-        // load first image last
-        //for each image
-        //append image element child to container/frame div
-        //set image.src to images[i].baseurl
-      }
-    }
+    // if (!! art.images) {
+    //   //logic here
+    //   for (let i = art.images.length - 1; i > 0; i--) {
+    //     //'<img src ='+art.images[i].whateverurlvariablename+'/>'
+    //     console.log(art.images[i].baseimageurl);
+    //     $(".art-image").append("img").attr("src", art.images[i].baseimageurl);
+    //     // load first image last
+    //     //for each image
+    //     //append image element child to container/frame div
+    //     //set image.src to images[i].baseurl
+    //   }
+    // }
     //CHECK CLASSIFICATION HERE. IF PHOTO, CALL HARVARD FETCH AGAIN, RETURN FUNCTION
 
     if (!!art.title)$("#info").append(`<p>Title: ${art.title}</p>`);
@@ -155,7 +159,7 @@ function addContent()
     //generate new img element
     $('#art-container'+elementCount).append('<img class="mx-auto art-image blur hover:blur-lg" id = "image'+elementCount+'" alt="Art Image"/>')
 
-    harvardFetch()
+
     
 
     //assign element to variable, pass element to rendering/fetching functions
@@ -175,9 +179,9 @@ function handleScroll() {
   let breakpoint = window.innerHeight + window.pageYOffset;
   console.log(breakpoint);
 
-  if (breakpoint >= pageEnd) {
+  if (breakpoint >= pageEnd && scrollLoaded == true) {
     console.log("loadnew");
-    if(scrollLoaded == true) addContent();
+    harvardFetch();
     //rendering logic here
   }
 }
