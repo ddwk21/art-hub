@@ -159,6 +159,8 @@ function addContent()
     //generate new img element
     $('#art-container'+elementCount).append('<img class="mx-auto art-image blur hover:blur-lg" id = "image'+elementCount+'" alt="Art Image"/>')
 
+    $('#art-container'+elementCount).append('<div id= "like'+elementCount+'"> <button class="button" id = "likeBtn'+elementCount+'">Like</button></div>')
+
 
     
 
@@ -185,6 +187,13 @@ function handleScroll() {
     //rendering logic here
   }
 }
+// set to localStorage
+$("#likeBtn").click(function () {
+  var likeBtn = $("#likeBtn").val();
+  localStorage.setItem("", );
+});
+// call from local storage
+$("#likeBtn").val(localStorage.getItem(""));
 
 window.addEventListener("scroll", handleScroll);
 //Write scrolling event listener
