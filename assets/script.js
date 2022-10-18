@@ -6,9 +6,11 @@ let harvardWorking;
 let imageEl = document.getElementById("image");
 const harvardKey = "41920f1f-a0a4-40cf-b3fb-3ce184ea6dc1";
 const harvardArt = "https://api.harvardartmuseums.org/object";
+let elementCount=0;
+let scrollLoaded;
 
 const harvardPages = 24170;
-//there are this many pages at 100 size for harvard fetch
+//there are this many pages at 10 size for harvard fetch
 
 // function saveData(x){
 //     harvardWorking = x;
@@ -17,7 +19,7 @@ const harvardPages = 24170;
 function harvardFetch() {
   //Get a random number between 0 and the number of pages of 100 entries
   let randomPage = Math.floor(Math.random() * harvardPages);
-
+  scrollLoaded = false;
   //fetch using API key and the previously generated random page
   fetch(
     "https://api.harvardartmuseums.org/object?&size=10&&apikey=" +
@@ -36,7 +38,8 @@ function harvardFetch() {
     //Filter function only allows in records that have an image included with their data, then adds them to the array harvardworking
 
     //call renderHarvard function
-    .then(() => renderHarvard());
+    .then(() => renderHarvard())
+    .finally(() => scrollLoaded = true)
 }
 
 //random number between 0 and 400k
@@ -81,7 +84,13 @@ function renderHarvard() {
         harvardFetch();
       return;
     }
+
+    if (elementCount >= 1){
+      imageEl = document.getElementById("image"+elementCount)
+    }
+
     imageEl.src = art.primaryimageurl;
+    
     if (!! art.images) {
       //logic here
       for (let i = art.images.length - 1; i > 0; i--) {
@@ -133,7 +142,7 @@ function renderHarvard() {
   
 }
 
-let elementCount=0;
+
 
 function addContent()
 {
@@ -143,6 +152,8 @@ function addContent()
 
     //generate new img element
     $('#art-container'+elementCount).append('<img class="mx-auto art-image blur hover:blur-lg" id = "image'+elementCount+'" alt="Art Image"/>')
+
+    harvardFetch()
     
 
     //assign element to variable, pass element to rendering/fetching functions
@@ -164,7 +175,7 @@ function handleScroll() {
 
   if (breakpoint >= pageEnd) {
     console.log("loadnew");
-    addContent();
+    if(scrollLoaded == true) addContent();
     //rendering logic here
   }
 }
