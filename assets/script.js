@@ -135,7 +135,7 @@ function renderHarvard() {
     if (art.dated)
       $("#info" + elementCount).append(`<p>Dated: ${art.dated}</p>`);
 
-    if (art.dated)
+    if (art.culture)
       $("#info" + elementCount).append(`<p>Culture: ${art.culture}</p>`);
     // $("#info").append(`<p>Medium: ${art.medium}</p>`);
     // using the console.log to filter through images that fit the criteria.
