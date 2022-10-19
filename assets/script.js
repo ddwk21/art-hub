@@ -190,11 +190,7 @@ function addContent() {
       '" alt="Art Image"/>'
       );
       
-      // $('#body').append(
-        //   '<div class="right"></div>'
-        // );
-        
-      
+     
      $('#art-container'+thisElementCount).append(
             '<div id= "like'+thisElementCount+'"><button class="btn" id = "'+thisElementCount+'">♥</button></div>')
             
