@@ -127,16 +127,7 @@ function renderHarvard() {
       $("#info" + elementCount).append(`<p>` + art.culture + "</p>");
 
   }
-  // }
 
-  // exclude classification:17
-
-
-  //trying to set the image from index html to the image of the record from the array
-
-  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  // PUT THIS IN AN ELSE FUNCTION, SO IF THERE ARE NO ADDITIONAL IMAGES JUST USE PRIMARY
-  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 }
 
 function addContent() {
