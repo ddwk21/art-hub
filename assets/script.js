@@ -154,15 +154,16 @@ function addContent() {
       thisElementCount +
       '" alt="Art Image"/>'
       );
-<<<<<<< HEAD
+
       
      
-=======
-        
+
+      
+          $('#art-container'+thisElementCount).append(
+            '<div class="like-container" id= "like'+thisElementCount+'"><button class="btn" id = "'+thisElementCount+'">♥</button></div>')
+
       //add like button
->>>>>>> fcf616300d7b15edd8c768be2cd1f93219b2f2e6
-     $('#art-container'+thisElementCount).append(
-            '<div id= "like'+thisElementCount+'"><button class="btn" id = "'+thisElementCount+'">♥</button></div>')
+
             
             // set to localStorage
             $('#'+thisElementCount).click(function (event) {

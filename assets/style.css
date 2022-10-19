@@ -145,4 +145,12 @@ bottom: 0px;
     width: 45vw;
   }
 
+  .like-container {
+    position: absolute;
+    vertical-align: bottom;
+    left: 40%;
+    bottom: 12%;
+    
+  }
+
 }
