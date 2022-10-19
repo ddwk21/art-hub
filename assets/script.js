@@ -172,8 +172,6 @@ function renderHarvard() {
       art.medium
     );
     console.log(art.images); // Display amount of images attached to file.
-    console.log(art);
-
     // } else {
   }
   // }
