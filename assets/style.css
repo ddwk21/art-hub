@@ -59,6 +59,7 @@ bottom: 0px;
   align-items: center;
   opacity: 0.6;
   transition: 0.3s;
+  position: absolute;
 }
 .btn:hover {
   opacity: 1;
