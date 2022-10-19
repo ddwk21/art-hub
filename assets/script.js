@@ -8,6 +8,7 @@ const harvardKey = "41920f1f-a0a4-40cf-b3fb-3ce184ea6dc1";
 const harvardArt = "https://api.harvardartmuseums.org/object";
 let elementCount = 0;
 let scrollLoaded;
+var liked = $('#likeBtn'+elementCount+'')
 
 const harvardPages = 24170;
 //there are this many pages at 10 size for harvard fetch
@@ -182,24 +183,49 @@ function addContent() {
 
   //generate new frame div
   $("#body").append(
-    '<div class="art-container" id = "art-container' + elementCount + '"></div>'
-  );
-
-  //generate new img element
-  $("#art-container" + elementCount).append(
-    '<img class="mx-auto art-image my-11" id = "image' +
-      elementCount +
+    '<div class="art-container" id = "art-container' + thisElementCount + '"></div>'
+    );
+    
+    //generate new img element
+    $("#art-container" + thisElementCount).append(
+      '<img class="mx-auto art-image my-11" id = "image' +
+      thisElementCount +
       '" alt="Art Image"/>'
-  );
-
-  $("#art-container" + elementCount).append(
+      );
+      
+      // $('#body').append(
+        //   '<div class="right"></div>'
+        // );
+        
+      
+          $('#art-container'+thisElementCount).append(
+            '<div id= "like'+thisElementCount+'"><button class="btn" id = "'+thisElementCount+'">♥</button></div>')
+            
+            // set to localStorage
+            $('#'+thisElementCount).click(function (event) {
+            let imageEl = document.getElementById('image'+event.target.id) 
+           if (!window.localStorage.getItem('image'+event.target.id)){
+            window.localStorage.setItem('image'+event.target.id,imageEl.src )
+            $(event.target).css('background-color', '#ff6347');
+            console.log("saved")
+           }
+           else if (!! window.localStorage.getItem('image'+event.target.id)){
+            window.localStorage.removeItem('image'+event.target.id)
+            $(event.target).css('background-color', 'transparent');
+            console.log("removed")
+           }
+            }
+            );
+        
+        
+  $("#art-container" + thisElementCount).append(
     '<div class="overlay"><div class="art-info max-w-1/2" id="info' +
-      elementCount +
+      thisElementCount +
       '"></div></div>'
-  );
+      );
 
-    let thisElement = document.getElementById('image'+thisElementCount);
-    return thisElement;
+    let thisElement = document.getElementById('image'+thisElementCount)
+    return thisElement
   //append new art-info element to same element as above, give art info a unique ID using the same method as above "art-info"+element count
   //make sure where you are adding info to the element, you also use this unique id. Same methodology
 

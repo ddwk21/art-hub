@@ -39,6 +39,39 @@ body {
     box-shadow: 0px 0px 200px rgb(252 251 248);
 }
 
+#like {
+display: flex-end;
+  position: absolute;
+bottom: 0px;
+}
+.btn {
+  display: inline-flex;
+  max-height: 50px;
+  max-width: 50px;
+  size: auto;
+  color: aliceblue;
+  background-color:transparent;
+  padding:15px;
+  margin: 10px;
+  border-radius: 100%;
+  font-size: 30px;
+  text-align:center;
+  align-items: center;
+  opacity: 0.6;
+  transition: 0.3s;
+}
+.btn:hover {
+  opacity: 1;
+}
+
+
+#like {
+  display: block;
+  max-width: 100px;
+  max-height: 100px;
+ justify-content: flex-end;
+}
+
 .overlay {
     position: absolute;
     left: 15%;
@@ -68,6 +101,15 @@ body {
     text-align: center;
     width: 45vw;
 
+  }
+  .right {
+    height: 90px;
+    width: 90px;
+    border: 10px white;
+    background-color: transparent;
+    float: right;
+    position: fixed;
+    margin-top: 5px;
   }
 
   
