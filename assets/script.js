@@ -183,34 +183,43 @@ function addContent() {
 
   //generate new frame div
   $("#body").append(
-    '<div class="art-container" id = "art-container' + elementCount + '"></div>'
+    '<div class="art-container" id = "art-container' + thisElementCount + '"></div>'
   );
 
   //generate new img element
-  $("#art-container" + elementCount).append(
+  $("#art-container" + thisElementCount).append(
     '<img class="mx-auto art-image my-11" id = "image' +
-      elementCount +
-      '" alt="Art Image"/>'
-  );
-  
-  // $('#body').append(
-  //   '<div class="right"></div>'
-  // );
-
-  $("#art-container" + elementCount).append(
+    thisElementCount +
+    '" alt="Art Image"/>'
+    );
+    
+    // $('#body').append(
+      //   '<div class="right"></div>'
+      // );
+      $('#art-container'+thisElementCount).append(
+        '<div id= "like'+thisElementCount+'"><button class="btn" id = "likeBtn'+thisElementCount+'">♥</button></div>')
+        
+        // set to localStorage
+        $('#likeBtn'+thisElementCount).click(function () {
+        console.log("save")
+        var likeBtn = $("#likeBtn").val();
+          window.localStorage.setItem('image',+thisElementCount );
+        }
+        );
+        console.log(likeBtn)
+        // // call from local storage
+        // $("#likeBtn").val(localStorage.getItem(""));
+        
+  $("#art-container" + thisElementCount).append(
     '<div class="overlay"><div class="art-info max-w-1/2" id="info' +
-      elementCount +
+      thisElementCount +
       '"></div></div>'
-  );
+      );
 
-    let thisElement = document.getElementById('image'+thisElementCount);
-    return thisElement;
+    let thisElement = document.getElementById('image'+thisElementCount)
+    return thisElement
   //append new art-info element to same element as above, give art info a unique ID using the same method as above "art-info"+element count
   //make sure where you are adding info to the element, you also use this unique id. Same methodology
-
-    $('#art-container'+elementCount).append(
-      '<div id= "like'+elementCount+'"><button class="btn" id = "likeBtn'+elementCount+'">♥</button></div>');
-     
 
   //if api = harvard logicblah
 
@@ -243,14 +252,6 @@ function handleScroll() {
     //rendering logic here
   }
 }
-
-// set to localStorage
-$('.favBtn').click(function () {
-  var likeBtn = $("#likeBtn").val();
-  window.localStorage.setItem('artEl','baseimageurl' );
-});
-// // call from local storage
-$("#likeBtn").val(localStorage.getItem(""));
 
 window.addEventListener("scroll", handleScroll);
 //Write scrolling event listener
