@@ -199,7 +199,7 @@ function addContent() {
         
       
           $('#art-container'+thisElementCount).append(
-            '<div id= "like'+thisElementCount+'"><button class="btn" id = "'+thisElementCount+'">♥</button></div>')
+            '<div class="like-container" id= "like'+thisElementCount+'"><button class="btn" id = "'+thisElementCount+'">♥</button></div>')
             
             // set to localStorage
             $('#'+thisElementCount).click(function (event) {
