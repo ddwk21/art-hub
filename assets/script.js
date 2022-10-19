@@ -8,6 +8,7 @@ const harvardKey = "41920f1f-a0a4-40cf-b3fb-3ce184ea6dc1";
 const harvardArt = "https://api.harvardartmuseums.org/object";
 let elementCount = 0;
 let scrollLoaded;
+var liked = $('#likeBtn'+elementCount+'')
 
 const harvardPages = 24170;
 //there are this many pages at 10 size for harvard fetch
@@ -200,6 +201,10 @@ function addContent() {
       elementCount +
       '" alt="Art Image"/>'
   );
+  
+  // $('#body').append(
+  //   '<div class="right"></div>'
+  // );
 
   $("#art-container" + elementCount).append(
     '<div class="overlay"><div class="art-info max-w-1/2" id="info' +
@@ -210,7 +215,9 @@ function addContent() {
   //append new art-info element to same element as above, give art info a unique ID using the same method as above "art-info"+element count
   //make sure where you are adding info to the element, you also use this unique id. Same methodology
 
-    $('#art-container'+elementCount).append('<div id= "like'+elementCount+'"> <button class="button" id = "likeBtn'+elementCount+'">♥</button></div>')
+    $('#art-container'+elementCount).append(
+      '<div id= "like'+elementCount+'"><button class="btn" id = "likeBtn'+elementCount+'">♥</button></div>');
+     
 
   //if api = harvard logicblah
 
@@ -242,12 +249,13 @@ function handleScroll() {
     //rendering logic here
   }
 }
+
 // set to localStorage
-$("#likeBtn").click(function () {
+$('.favBtn').click(function () {
   var likeBtn = $("#likeBtn").val();
-  localStorage.setItem("", );
+  window.localStorage.setItem('artEl','baseimageurl' );
 });
-// call from local storage
+// // call from local storage
 $("#likeBtn").val(localStorage.getItem(""));
 
 window.addEventListener("scroll", handleScroll);
