@@ -61,7 +61,6 @@ function metFetch() {
     .then(() => renderMet())
     // .finally(() => (scrollLoaded = true));
 
-  console.log("placeholder");
 }
 
 function renderMet() {
@@ -92,7 +91,6 @@ function renderMet() {
     if (metArt.culture)
       $("#info" + elementCount).append(`<p>` + metArt.culture + "</p>");
   }
-  console.log(workingObjects);
 }
 
 metFetch();
@@ -139,9 +137,8 @@ function renderHarvard() {
     //CHECK CLASSIFICATION HERE. IF PHOTO, CALL HARVARD FETCH AGAIN, RETURN FUNCTION
     if (art.title)
       $("#info" + elementCount).append(`<p>` + art.title + "</p>");
-    console.log($(body));
 
-    if (art.people.name)
+    if (art.people[0].name)
       $("#info" + elementCount).append(
         `<p>` + art.people[0].name + "</p>"
       );
@@ -198,21 +195,21 @@ function addContent() {
         // );
         
       
-          $('#art-container'+thisElementCount).append(
+     $('#art-container'+thisElementCount).append(
             '<div id= "like'+thisElementCount+'"><button class="btn" id = "'+thisElementCount+'">♥</button></div>')
             
             // set to localStorage
             $('#'+thisElementCount).click(function (event) {
             let imageEl = document.getElementById('image'+event.target.id) 
-           if (!window.localStorage.getItem('image'+event.target.id)){
+          if (!window.localStorage.getItem('image'+event.target.id)){
             window.localStorage.setItem('image'+event.target.id,imageEl.src )
             $(event.target).css('background-color', '#ff6347');
-            console.log("saved")
+            console.log(localStorage)
            }
-           else if (!! window.localStorage.getItem('image'+event.target.id)){
+          else if (!! window.localStorage.getItem('image'+event.target.id)){
             window.localStorage.removeItem('image'+event.target.id)
             $(event.target).css('background-color', 'transparent');
-            console.log("removed")
+            console.log(localStorage)
            }
             }
             );
@@ -251,8 +248,6 @@ function fetchMaster() {
 function handleScroll() {
   let pageEnd = document.body.offsetHeight - 50;
   let breakpoint = window.innerHeight + window.pageYOffset;
-  console.log(pageEnd)
-  console.log(breakpoint);
 
   if (breakpoint >= pageEnd) {
     console.log("loadnew");
