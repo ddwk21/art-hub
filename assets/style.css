@@ -11,10 +11,9 @@ html {
     overflow: hidden;
 }
 
-h1 {
-    display:flex;
-    justify-content: center;
-    color: white;
+.logo {
+  width: 5vw;
+  align-items: center;
 }
 
 .art-container {
