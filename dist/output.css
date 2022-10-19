@@ -817,6 +817,7 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
   .sm\:pr-0 {
     padding-right: 0px;
   }
+
 }
 
 @media (min-width: 1024px) {
