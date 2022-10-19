@@ -184,31 +184,39 @@ function addContent() {
   //generate new frame div
   $("#body").append(
     '<div class="art-container" id = "art-container' + thisElementCount + '"></div>'
-  );
-
-  //generate new img element
-  $("#art-container" + thisElementCount).append(
-    '<img class="mx-auto art-image my-11" id = "image' +
-    thisElementCount +
-    '" alt="Art Image"/>'
     );
     
-    // $('#body').append(
-      //   '<div class="right"></div>'
-      // );
-      $('#art-container'+thisElementCount).append(
-        '<div id= "like'+thisElementCount+'"><button class="btn" id = "likeBtn'+thisElementCount+'">♥</button></div>')
+    //generate new img element
+    $("#art-container" + thisElementCount).append(
+      '<img class="mx-auto art-image my-11" id = "image' +
+      thisElementCount +
+      '" alt="Art Image"/>'
+      );
+      
+      // $('#body').append(
+        //   '<div class="right"></div>'
+        // );
         
-        // set to localStorage
-        $('#likeBtn'+thisElementCount).click(function () {
-        console.log("save")
-        var likeBtn = $("#likeBtn").val();
-          window.localStorage.setItem('image',+thisElementCount );
-        }
-        );
-        console.log(likeBtn)
-        // // call from local storage
-        // $("#likeBtn").val(localStorage.getItem(""));
+      
+          $('#art-container'+thisElementCount).append(
+            '<div id= "like'+thisElementCount+'"><button class="btn" id = "'+thisElementCount+'">♥</button></div>')
+            
+            // set to localStorage
+            $('#'+thisElementCount).click(function (event) {
+            let imageEl = document.getElementById('image'+event.target.id) 
+           if (!window.localStorage.getItem('image'+event.target.id)){
+            window.localStorage.setItem('image'+event.target.id,imageEl.src )
+            $(event.target).css('background-color', '#ff6347');
+            console.log("saved")
+           }
+           else if (!! window.localStorage.getItem('image'+event.target.id)){
+            window.localStorage.removeItem('image'+event.target.id)
+            $(event.target).css('background-color', 'transparent');
+            console.log("removed")
+           }
+            }
+            );
+        
         
   $("#art-container" + thisElementCount).append(
     '<div class="overlay"><div class="art-info max-w-1/2" id="info' +
