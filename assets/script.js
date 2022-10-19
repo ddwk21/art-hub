@@ -46,10 +46,8 @@ function harvardFetch() {
 
 //random number between 0 and 400k
 function metFetch() {
-  // scrollLoaded = false;
-  // let dataPoolStart = Math.floor(Math.random()*400001)
-  // let dataPoolEnd = dataPoolStart + 50;
 
+  //random ID to pull from met data
   let randomId = Math.floor(Math.random() * 400000);
 
   fetch(
@@ -59,7 +57,6 @@ function metFetch() {
     .then((response) => response.json())
     .then((data) => (metWorking = data))
     .then(() => renderMet())
-    // .finally(() => (scrollLoaded = true));
 
 }
 
@@ -108,12 +105,6 @@ function renderHarvard() {
     //randomly select an item from harvardworking array
 
     console.log("art", art);
-    // if (art.classificationid === 17 || !art.title || !art.people || !art.dated || !art.culture) {
-    //     console.log("start over")
-    //     console.log(art.people)
-    //     harvardFetch();
-    //   return;
-    // }
 
     if (elementCount >= 1) {
       let thisElement = addContent()
@@ -121,20 +112,6 @@ function renderHarvard() {
     }
 
     
-
-    // if (!! art.images) {
-    //   //logic here
-    //   for (let i = art.images.length - 1; i > 0; i--) {
-    //     //'<img src ='+art.images[i].whateverurlvariablename+'/>'
-    //     console.log(art.images[i].baseimageurl);
-    //     $(".art-image").append("img").attr("src", art.images[i].baseimageurl);
-    //     // load first image last
-    //     //for each image
-    //     //append image element child to container/frame div
-    //     //set image.src to images[i].baseurl
-    //   }
-    // }
-    //CHECK CLASSIFICATION HERE. IF PHOTO, CALL HARVARD FETCH AGAIN, RETURN FUNCTION
     if (art.title)
       $("#info" + elementCount).append(`<p>` + art.title + "</p>");
 
@@ -148,24 +125,12 @@ function renderHarvard() {
 
     if (art.culture)
       $("#info" + elementCount).append(`<p>` + art.culture + "</p>");
-    // $("#info").append(`<p>Medium: ${art.medium}</p>`);
-    // using the console.log to filter through images that fit the criteria.
-    // if (!! art.people[0].name){
-    console.log(
-      art.people[0].name,
-      art.people[0].role,
-      art.dated,
-      art.culture,
-      art.medium
-    );
-    console.log(art.images); // Display amount of images attached to file.
-    // } else {
+
   }
   // }
 
   // exclude classification:17
 
-  console.log(harvardWorking);
 
   //trying to set the image from index html to the image of the record from the array
 
@@ -189,12 +154,8 @@ function addContent() {
       thisElementCount +
       '" alt="Art Image"/>'
       );
-      
-      // $('#body').append(
-        //   '<div class="right"></div>'
-        // );
         
-      
+      //add like button
      $('#art-container'+thisElementCount).append(
             '<div id= "like'+thisElementCount+'"><button class="btn" id = "'+thisElementCount+'">♥</button></div>')
             
@@ -223,18 +184,10 @@ function addContent() {
 
     let thisElement = document.getElementById('image'+thisElementCount)
     return thisElement
-  //append new art-info element to same element as above, give art info a unique ID using the same method as above "art-info"+element count
-  //make sure where you are adding info to the element, you also use this unique id. Same methodology
 
-  //if api = harvard logicblah
 
-  //
-
-  //append new art-info element to same element as above, give art info a unique ID using the same method as above "art-info"+element count
-  //make sure where you are adding info to the element, you also use this unique id. Same methodology
-
-  //assign element to variable, pass element to rendering/fetching functions
 }
+//Decide which API to pull from
 function fetchMaster() {
   let toggle = Math.random();
 
@@ -244,6 +197,10 @@ function fetchMaster() {
   if (toggle) metFetch();
   else harvardFetch();
 }
+
+//on scroll check page position in relation to last child of body
+
+//if close enough to last child of body, run some rendering logic
 
 function handleScroll() {
   let pageEnd = document.body.offsetHeight - 50;
@@ -257,11 +214,6 @@ function handleScroll() {
 }
 
 window.addEventListener("scroll", handleScroll);
-//Write scrolling event listener
-
-//on scroll check page position in relation to last child of body
-
-//if close enough to last child of body, run some rendering logic
 
 window.onscroll = function () {
   stickNav();
