@@ -76,6 +76,26 @@ function renderMet() {
       imageEl = document.getElementById("image" + elementCount);
     }
     imageEl.src = metArt.primaryImage;
+
+    if (metArt.title)
+      $("#info" + elementCount).append(`<p>Title:` + metArt.title + "</p>");
+    console.log($(body));
+
+    if (metArt.artistDisplayName)
+      $("#info" + elementCount).append(
+        `<p>Name:` + metArt.artistDisplayName + "</p>"
+      );
+
+    if (metArt.artistRole)
+      $("#info" + elementCount).append(`<p>Role:` + metArt.artistRole + "</p>");
+
+    if (metArt.objectBeginDate)
+      $("#info" + elementCount).append(
+        `<p>Dated:` + metArt.objectBeginDate + "</p>"
+      );
+
+    if (metArt.culture)
+      $("#info" + elementCount).append(`<p>Culture:` + metArt.culture + "</p>");
   }
   console.log(workingObjects);
 }
@@ -127,16 +147,20 @@ function renderHarvard() {
     console.log($(body));
 
     if (art.people.name)
-      $("#info" + elementCount).append(`<p>Name: ${art.people[0].name}</p>`);
+      $("#info" + elementCount).append(
+        `<p>Name:` + art.people[0].name + "</p>"
+      );
 
     if (art.people.role)
-      $("#info" + elementCount).append(`<p>Role: ${art.people[0].role}</p>`);
+      $("#info" + elementCount).append(
+        `<p>Role:` + art.people[0].role + "</p>"
+      );
 
     if (art.dated)
-      $("#info" + elementCount).append(`<p>Dated: ${art.dated}</p>`);
+      $("#info" + elementCount).append(`<p>Dated:` + art.dated + "</p>");
 
-    if (art.dated)
-      $("#info" + elementCount).append(`<p>Culture: ${art.culture}</p>`);
+    if (art.culture)
+      $("#info" + elementCount).append(`<p>Culture:` + art.culture + "</p>");
     // $("#info").append(`<p>Medium: ${art.medium}</p>`);
     // using the console.log to filter through images that fit the criteria.
     // if (!! art.people[0].name){
@@ -148,8 +172,6 @@ function renderHarvard() {
       art.medium
     );
     console.log(art.images); // Display amount of images attached to file.
-    console.log(art);
-
     // } else {
   }
   // }

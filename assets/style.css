@@ -11,21 +11,23 @@ html {
     overflow: hidden;
 }
 
-h1 {
-    display:flex;
-    justify-content: center;
-    color: white;
+.logo {
+  width: 5vw;
+  align-items: center;
 }
 
 .art-container {
     position: relative;
     background-size: auto;
+    display: flex;
+    align-items: center;
+    max-width: 60vw;
+    margin-left: 20%;
     
 }
 
 .art-image {
     display: block;
-    max-height: 80%;
     max-width: 80%;
     margin-top: 20%;
     margin-bottom: 20%;
@@ -58,12 +60,12 @@ h1 {
 
 .overlay {
     position: absolute;
-    top: 15%;
-    bottom: 15%;
     left: 25%;
     right: 0;
-    height: 70%;
+    height: 50%;
     width: 50%;
+    display: flex;
+    align-items: center;
     opacity: 0;
     transition: .5s ease;
     background-color: rgba(80, 78, 78, 0.75)
