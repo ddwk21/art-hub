@@ -20,7 +20,7 @@ const harvardPages = 24170;
 function harvardFetch() {
   //Get a random number between 0 and the number of pages of 100 entries
   let randomPage = Math.floor(Math.random() * harvardPages);
-  scrollLoaded = false;
+  // scrollLoaded = false;
   //fetch using API key and the previously generated random page
   fetch(
     "https://api.harvardartmuseums.org/object?&size=10&&apikey=" +
@@ -41,12 +41,12 @@ function harvardFetch() {
     //call renderHarvard function
 
     .then(() => renderHarvard())
-    .finally(() => (scrollLoaded = true));
+    // .finally(() => (scrollLoaded = true));
 }
 
 //random number between 0 and 400k
-function metFetch(e) {
-  scrollLoaded = false;
+function metFetch() {
+  // scrollLoaded = false;
   // let dataPoolStart = Math.floor(Math.random()*400001)
   // let dataPoolEnd = dataPoolStart + 50;
 
@@ -59,7 +59,7 @@ function metFetch(e) {
     .then((response) => response.json())
     .then((data) => (metWorking = data))
     .then(() => renderMet())
-    .finally(() => (scrollLoaded = true));
+    // .finally(() => (scrollLoaded = true));
 
   console.log("placeholder");
 }
@@ -70,33 +70,27 @@ function renderMet() {
     metFetch();
     return;
   } else {
-    addContent();
+    let thisElement = addContent();
     console.log("Image found");
     let metArt = metWorking;
-    if (elementCount >= 1) {
-      imageEl = document.getElementById("image" + elementCount);
-    }
-    imageEl.src = metArt.primaryImage;
+    thisElement.src = metArt.primaryImage;
 
     if (metArt.title)
-      $("#info" + elementCount).append(`<p>Title:` + metArt.title + "</p>");
+      $("#info" + elementCount).append(`<p>` + metArt.title + "</p>");
     console.log($(body));
 
     if (metArt.artistDisplayName)
       $("#info" + elementCount).append(
-        `<p>Name:` + metArt.artistDisplayName + "</p>"
+        `<p>` + metArt.artistDisplayName + "</p>"
       );
-
-    if (metArt.artistRole)
-      $("#info" + elementCount).append(`<p>Role:` + metArt.artistRole + "</p>");
 
     if (metArt.objectBeginDate)
       $("#info" + elementCount).append(
-        `<p>Dated:` + metArt.objectBeginDate + "</p>"
+        `<p>` + metArt.objectBeginDate + "</p>"
       );
 
     if (metArt.culture)
-      $("#info" + elementCount).append(`<p>Culture:` + metArt.culture + "</p>");
+      $("#info" + elementCount).append(`<p>` + metArt.culture + "</p>");
   }
   console.log(workingObjects);
 }
@@ -113,7 +107,6 @@ function renderHarvard() {
     harvardFetch();
     return;
   } else {
-    addContent();
     //randomly select an item from harvardworking array
 
     console.log("art", art);
@@ -125,10 +118,11 @@ function renderHarvard() {
     // }
 
     if (elementCount >= 1) {
-      imageEl = document.getElementById("image" + elementCount);
+      let thisElement = addContent()
+      thisElement.src = art.primaryimageurl;
     }
 
-    imageEl.src = art.primaryimageurl;
+    
 
     // if (!! art.images) {
     //   //logic here
@@ -144,24 +138,19 @@ function renderHarvard() {
     // }
     //CHECK CLASSIFICATION HERE. IF PHOTO, CALL HARVARD FETCH AGAIN, RETURN FUNCTION
     if (art.title)
-      $("#info" + elementCount).append(`<p>Title:` + art.title + "</p>");
+      $("#info" + elementCount).append(`<p>` + art.title + "</p>");
     console.log($(body));
 
     if (art.people.name)
       $("#info" + elementCount).append(
-        `<p>Name:` + art.people[0].name + "</p>"
-      );
-
-    if (art.people.role)
-      $("#info" + elementCount).append(
-        `<p>Role:` + art.people[0].role + "</p>"
+        `<p>` + art.people[0].name + "</p>"
       );
 
     if (art.dated)
-      $("#info" + elementCount).append(`<p>Dated:` + art.dated + "</p>");
+      $("#info" + elementCount).append(`<p>` + art.dated + "</p>");
 
     if (art.culture)
-      $("#info" + elementCount).append(`<p>Culture:` + art.culture + "</p>");
+      $("#info" + elementCount).append(`<p>` + art.culture + "</p>");
     // $("#info").append(`<p>Medium: ${art.medium}</p>`);
     // using the console.log to filter through images that fit the criteria.
     // if (!! art.people[0].name){
@@ -190,6 +179,8 @@ function renderHarvard() {
 
 function addContent() {
   elementCount++;
+  let thisElementCount = elementCount;
+
   //generate new frame div
   $("#body").append(
     '<div class="art-container" id = "art-container' + elementCount + '"></div>'
@@ -212,6 +203,8 @@ function addContent() {
       '"></div></div>'
   );
 
+    let thisElement = document.getElementById('image'+thisElementCount);
+    return thisElement;
   //append new art-info element to same element as above, give art info a unique ID using the same method as above "art-info"+element count
   //make sure where you are adding info to the element, you also use this unique id. Same methodology
 
@@ -239,11 +232,12 @@ function fetchMaster() {
 }
 
 function handleScroll() {
-  let pageEnd = document.body.offsetHeight;
+  let pageEnd = document.body.offsetHeight - 50;
   let breakpoint = window.innerHeight + window.pageYOffset;
+  console.log(pageEnd)
   console.log(breakpoint);
 
-  if (breakpoint >= pageEnd && scrollLoaded == true) {
+  if (breakpoint >= pageEnd) {
     console.log("loadnew");
     fetchMaster();
     //rendering logic here

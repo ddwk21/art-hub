@@ -6,6 +6,10 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  min-height: 105vh;
+}
+
 
 #navbar {
     overflow: hidden;
