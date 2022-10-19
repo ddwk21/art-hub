@@ -78,11 +78,11 @@ body {
 
 @media only screen and (max-width: 600px) {
   #navbar {
-    height: 15vh;
+    height: 14vh;
   }
 
   .logo {
-    width: 14vw;
+    width: 23vw;
     margin-top: 1vh;
   }
   
