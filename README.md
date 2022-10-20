@@ -4,6 +4,9 @@ Art-hub is an application created to provide users with an endless experience. U
 ## Motivation
 Our motivation for this project was to create an application that is a healthier as well as educational alternative for the inevitable "doom-scroll". 
 
+## Technologies Used
+In this project we have used: Javascript, Jquery, CSS, Tailwind CSS, and REST APIs from both Harvard and the Met.
+
 ## User Story
 As a user that loves art, I want to be able to scroll through an endless feed of art pieces from many eras and cultures. When I enjoy a piece of art, I want to be able to click like on that image so that I can view it later. 
 
